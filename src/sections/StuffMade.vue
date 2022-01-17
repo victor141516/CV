@@ -11,13 +11,13 @@ const FEATURES = {
   Docker: 6,
 }
 
-export type Repos = {
+export type Repo = {
   name: string
   url: string
   date: number
   features: number[]
   tier: number
-}[]
+}
 
 const repos = [
   {
@@ -166,10 +166,12 @@ const repos = [
   } else {
     return b.date - a.date
   }
-}) as Repos
+}) as Repo[]
 </script>
 
 <template>
-  <StuffMadeDesktop :repos="repos" :features="FEATURES" class="hidden md:flex"></StuffMadeDesktop>
-  <StuffMadeMobile :repos="repos" :features="FEATURES" class="flex md:hidden"></StuffMadeMobile>
+  <div>
+    <StuffMadeDesktop :repos="repos" :features="FEATURES" class="hidden md:flex"></StuffMadeDesktop>
+    <StuffMadeMobile :repos="repos" :features="FEATURES" class="flex md:hidden"></StuffMadeMobile>
+  </div>
 </template>

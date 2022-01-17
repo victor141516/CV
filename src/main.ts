@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { createI18n } from 'vue-i18n'
 import '@picocss/pico/css/pico.classless.min.css'
 
-import './index.css'
+import './index.scss'
 import App from './App.vue'
 import { texts, preferredLanguage } from './i18n'
 

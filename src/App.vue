@@ -6,8 +6,8 @@ import Work from './sections/Work.vue'
 </script>
 
 <template>
-  <Head></Head>
-  <AboutMe class="bg-sky-600"></AboutMe>
-  <StuffMade></StuffMade>
-  <Work class="bg-sky-600"></Work>
+  <Head class="vi-bg-odd"></Head>
+  <AboutMe class="vi-bg-even"></AboutMe>
+  <StuffMade class="vi-bg-odd"></StuffMade>
+  <Work class="vi-bg-even"></Work>
 </template>

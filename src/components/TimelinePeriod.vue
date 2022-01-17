@@ -110,8 +110,8 @@ const columnWidthPx = computed(() => `${columnWidth.value}${columnWidth.value ==
         <span
           class="w-0 ml-4 whitespace-nowrap justify-self-start transition-all"
           :class="{
-            'text-xs text-gray-400': !isExpanded,
-            'text-lg text-gray-200': isExpanded,
+            'text-xs text-gray-300 dark:text-gray-400': !isExpanded,
+            'text-lg text-gray-500 dark:text-gray-200': isExpanded,
           }"
           style="writing-mode: vertical-lr"
           >{{ period.name }}</span

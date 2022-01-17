@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { DateTime } from 'luxon'
 import { useI18n } from 'vue-i18n'
-import { Repos } from '../sections/StuffMade.vue'
+import { Repo } from '../sections/StuffMade.vue'
 
 const props = defineProps<{
-  repos: Repos
+  repos: Repo[]
   features: Record<string, number>
 }>()
 const FEATURES = props.features
@@ -56,9 +56,11 @@ const { t } = useI18n()
         <div class="pt-4 flex flex-col h-full">
           <p v-html="t(`home.stuffMade.descriptions.${repo.name}`)"></p>
           <div class="flex pb-4 mt-auto ml-auto">
-            <span class="bg-slate-600 rounded-sm px-1 text-sm mx-1" v-for="feature in repo.features">{{
-              featureNames[feature]
-            }}</span>
+            <span
+              class="bg-gray-200 dark:bg-slate-600 rounded-sm px-1 py-px text-sm mx-1"
+              v-for="feature in repo.features"
+              >{{ featureNames[feature] }}</span
+            >
           </div>
         </div>
       </article>

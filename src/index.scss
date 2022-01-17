@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {
+  @apply text-sky-600 dark:text-cyan-600;
+}
+
+.vi-bg-odd {
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--background-color);
+  }
+
+  @apply bg-white;
+}
+
+.vi-bg-even {
+  @apply bg-indigo-50 dark:bg-sky-600;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+span {
+  @apply text-gray-800 dark:text-gray-200;
+}

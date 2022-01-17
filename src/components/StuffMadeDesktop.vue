@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { DateTime } from 'luxon'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { Repos } from '../sections/StuffMade.vue'
+import { Repo } from '../sections/StuffMade.vue'
 
 const props = defineProps<{
-  repos: Repos
+  repos: Repo[]
   features: Record<string, number>
 }>()
 const repos = props.repos
@@ -27,9 +27,21 @@ const formatDate = (ts: number) => {
   })
 }
 
+const reposByTier = computed(() =>
+  repos.reduce((acc, e) => {
+    if (!acc[e.tier]) acc[e.tier] = []
+    acc[e.tier].push(e)
+    return acc
+  }, [] as Repo[][]),
+)
+console.log(reposByTier.value)
+
 const showingTier = ref(1)
 const showMoreTier = () => (showingTier.value += 1)
 const descriptionIndexToShow = ref<number | null>(null)
+function calculateFullListIndex(tier: number, index: number) {
+  return reposByTier.value.filter((_, i) => i < tier).flat().length + index
+}
 </script>
 
 <template>
@@ -37,26 +49,27 @@ const descriptionIndexToShow = ref<number | null>(null)
     <h2 class="text-2xl font-bold">{{ t('home.stuffMade.title') }}</h2>
 
     <div class="mt-4 grid grid-cols-[3fr_2fr_repeat(6,1fr)] xl:w-2/3">
-      <span class="flex items-center justify-center row-span-2 border-r border-white">{{
+      <span class="flex items-center justify-center row-span-2 border-r border-slate-700 dark:border-white">{{
         t('home.stuffMade.project')
       }}</span>
       <span class="flex items-center justify-center row-span-2">{{ t('home.stuffMade.date') }}</span>
-      <span class="flex items-center justify-center col-span-2 border-b border-r border-white">Frontend</span>
-      <span class="flex items-center justify-center col-span-4 border-b border-white">Backend</span>
-      <span class="flex items-center justify-center col-start-3 border-r border-white">TypeScript</span>
-      <span class="flex items-center justify-center border-r border-white px-4">Vue.js</span>
-      <span class="flex items-center justify-center border-r border-white">TypeScript</span>
-      <span class="flex items-center justify-center border-r border-white">Node.js</span>
-      <span class="flex items-center justify-center border-r border-white">Python</span>
+      <span class="flex items-center justify-center col-span-2 border-b border-r border-slate-700 dark:border-white"
+        >Frontend</span
+      >
+      <span class="flex items-center justify-center col-span-4 border-b border-slate-700 dark:border-white"
+        >Backend</span
+      >
+      <span class="flex items-center justify-center col-start-3 border-r border-slate-700 dark:border-white"
+        >TypeScript</span
+      >
+      <span class="flex items-center justify-center border-r border-slate-700 dark:border-white px-4">Vue.js</span>
+      <span class="flex items-center justify-center border-r border-slate-700 dark:border-white">TypeScript</span>
+      <span class="flex items-center justify-center border-r border-slate-700 dark:border-white">Node.js</span>
+      <span class="flex items-center justify-center border-r border-slate-700 dark:border-white">Python</span>
       <span class="flex items-center justify-center">Docker</span>
 
-      <template v-for="tierLoop in 3">
-        <template
-          v-for="({ name, url, date, features }, index) in repos.filter(
-            (e) => e.tier === tierLoop && tierLoop <= showingTier,
-          )"
-          class="flex flex-col"
-        >
+      <template v-for="(tierGroup, tier) in reposByTier">
+        <template v-if="tier <= showingTier" v-for="({ name, url, date, features }, index) in tierGroup">
           <div class="col-start-1 flex items-center">
             <a class="flex-1 flex items-center justify-center" target="_blank" :href="url">
               <div class="rounded-social-buttons scale-50">
@@ -67,13 +80,16 @@ const descriptionIndexToShow = ref<number | null>(null)
               <span class="w-0 flex-1 whitespace-nowrap overflow-hidden text-ellipsis">{{ name }}</span>
             </a>
             <div
-              @mouseover="descriptionIndexToShow = index"
+              @mouseover="descriptionIndexToShow = calculateFullListIndex(tier, index)"
               @mouseleave="descriptionIndexToShow = null"
               class="relative"
             >
               <i class="px-2 fas fa-info-circle cursor-pointer"></i>
-              <div class="pl-2 absolute top-[-150%] left-[100%]" v-if="descriptionIndexToShow === index">
-                <div class="p-2 bg-slate-400 rounded-md shadow-lg shadow-slate-800 w-64">
+              <div
+                class="pl-2 absolute top-[-150%] left-[100%]"
+                v-if="descriptionIndexToShow === calculateFullListIndex(tier, index)"
+              >
+                <div class="p-2 bg-slate-200 dark:bg-slate-400 rounded-md shadow-lg shadow-slate-400 w-64">
                   <p class="text-gray-900" v-html="t(`home.stuffMade.descriptions.${name}`)"></p>
                 </div>
               </div>
