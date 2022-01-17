@@ -180,10 +180,10 @@ const showTimeline = ref(true)
     <h2 class="text-2xl font-bold">{{ t('home.work.title') }}</h2>
     <div
       v-if="showTimeline"
-      class="mt-12 w-full flex justify-center overflow-x-scroll lg:overflow-x-auto snap-x lg:snap-none"
+      class="mt-4 w-full flex justify-center overflow-x-scroll lg:overflow-x-auto snap-x lg:snap-none"
     >
       <Timeline
-        class="w-full md:w-[unset]"
+        class="w-full 2xl:w-[unset]"
         :timeline="timeline"
         :default-depth="1"
         :expanded="true"
