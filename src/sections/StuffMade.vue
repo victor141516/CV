@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { DateTime } from 'luxon'
-import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
+import StuffMadeDesktop from '../components/StuffMadeDesktop.vue'
+import StuffMadeMobile from '../components/StuffMadeMobile.vue'
 
 const FEATURES = {
   TSF: 1,
@@ -14,7 +11,22 @@ const FEATURES = {
   Docker: 6,
 }
 
+export type Repos = {
+  name: string
+  url: string
+  date: number
+  features: number[]
+  tier: number
+}[]
+
 const repos = [
+  {
+    name: 'YourArch',
+    url: 'https://github.com/victor141516/YourArch',
+    date: 1641600000,
+    features: [FEATURES.Node, FEATURES.Docker, FEATURES.TSB, FEATURES.Vue],
+    tier: 1,
+  },
   {
     name: 'telepyzza',
     url: 'https://github.com/victor141516/telepyzza',
@@ -154,83 +166,10 @@ const repos = [
   } else {
     return b.date - a.date
   }
-})
-
-const formatDate = (ts: number) => {
-  const { years, months, days } = DateTime.now()
-    .diff(DateTime.fromMillis(ts * 1000), ['days', 'months', 'years'])
-    .toObject()
-  let unit = days === 1 ? 'day' : 'days'
-  let n = days
-  if (years! > 0) [unit, n] = [years === 1 ? 'year' : 'years', years]
-  else if (months! > 0) [unit, n] = [months === 1 ? 'month' : 'months', months]
-  return t('home.stuffMade.dateTemplate', { n, unit: t(`home.stuffMade.${unit}`), ago: t('home.stuffMade.ago') })
-}
-
-const showingTier = ref(1)
-const showMoreTier = () => (showingTier.value += 1)
-const descriptionIndexToShow = ref<number | null>(null)
+}) as Repos
 </script>
 
 <template>
-  <div class="py-12 flex flex-col items-center justify-center">
-    <h2 class="text-2xl font-bold">{{ t('home.stuffMade.title') }}</h2>
-
-    <div class="mt-4 grid grid-cols-[3fr_2fr_repeat(6,1fr)] xl:w-2/3">
-      <span class="flex items-center justify-center row-span-2 border-r border-white">{{
-        t('home.stuffMade.project')
-      }}</span>
-      <span class="flex items-center justify-center row-span-2">{{ t('home.stuffMade.date') }}</span>
-      <span class="flex items-center justify-center col-span-2 border-b border-r border-white">Frontend</span>
-      <span class="flex items-center justify-center col-span-4 border-b border-white">Backend</span>
-      <span class="flex items-center justify-center col-start-3 border-r border-white">TypeScript</span>
-      <span class="flex items-center justify-center border-r border-white px-4">Vue.js</span>
-      <span class="flex items-center justify-center border-r border-white">TypeScript</span>
-      <span class="flex items-center justify-center border-r border-white">Node.js</span>
-      <span class="flex items-center justify-center border-r border-white">Python</span>
-      <span class="flex items-center justify-center">Docker</span>
-
-      <template v-for="({ name, url, date, features, tier }, index) in repos">
-        <template v-if="tier <= showingTier">
-          <div class="col-start-1 flex items-center">
-            <a class="flex-1 flex items-center justify-center" target="_blank" :href="url">
-              <div class="rounded-social-buttons scale-50">
-                <span class="bg-transparent"
-                  ><span class="social-button github hover:!transform-none before:text-[65px]"></span
-                ></span>
-              </div>
-              <span class="w-0 flex-1 whitespace-nowrap overflow-hidden text-ellipsis">{{ name }}</span>
-            </a>
-            <div class="relative">
-              <i
-                @mouseover="descriptionIndexToShow = index"
-                @mouseleave="descriptionIndexToShow = null"
-                class="px-2 fas fa-info-circle cursor-pointer"
-              ></i>
-              <div
-                v-if="descriptionIndexToShow === index"
-                class="
-                  absolute
-                  top-[-150%]
-                  left-[calc(100%_+_10px)]
-                  p-2
-                  bg-gray-800
-                  rounded-md
-                  shadow-lg shadow-gray-900
-                  w-64
-                "
-              >
-                <p v-html="t(`home.stuffMade.descriptions.${name}`)"></p>
-              </div>
-            </div>
-          </div>
-          <span class="flex items-center justify-center">{{ formatDate(date) }}</span>
-          <span class="flex items-center justify-center" v-for="i in 6">{{ features!.includes(i) ? '✅' : '' }}</span>
-        </template>
-      </template>
-    </div>
-    <div v-if="showingTier !== 3" class="mt-4 flex items-center justify-center cursor-pointer" @click="showMoreTier">
-      <i class="fas fa-chevron-circle-down text-4xl"></i><span class="ml-4">Show more</span>
-    </div>
-  </div>
+  <StuffMadeDesktop :repos="repos" :features="FEATURES" class="hidden md:flex"></StuffMadeDesktop>
+  <StuffMadeMobile :repos="repos" :features="FEATURES" class="flex md:hidden"></StuffMadeMobile>
 </template>

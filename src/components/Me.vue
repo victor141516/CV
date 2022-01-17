@@ -7,7 +7,7 @@ const { t } = useI18n()
 <template>
   <div class="flex flex-col items-center text-center">
     <img class="rounded-full w-40" src="../assets/me.jpg" alt="Víctor Fernández" />
-    <h1 class="mt-2 text-6xl font-bold">
+    <h1 class="mt-2 text-4xl md:text-6xl font-bold">
       {{ t('home.me.title') }}<span class="font-extrabold text-blue-500"> Víctor Fernández</span>
     </h1>
     <div class="mt-6">
@@ -25,10 +25,10 @@ const { t } = useI18n()
         ><span class="social-button linkedin"></span
       ></a>
       <a class="bg-transparent" target="_blank" href="https://github.com/victor141516"
-        ><span class="social-button github before:text-[65px]"></span
+        ><span class="social-button github before:text-[50px]"></span
       ></a>
       <a class="bg-transparent" target="_blank" href="https://t.me/victor141516"
-        ><span class="social-button telegram before:text-[65px]"></span
+        ><span class="social-button telegram before:text-[50px]"></span
       ></a>
       <a class="bg-transparent" target="_blank" href="mailto:victor.fernandez.gabriel@gmail.com"
         ><span class="social-button email"></span
