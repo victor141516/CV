@@ -8,7 +8,7 @@ const lines = computed(() => new Array(5).fill(null).map((_, i) => t(`home.about
 
 <template>
   <div class="py-12 flex flex-col items-center justify-center">
-    <h2 class="text-2xl font-bold">{{ t('home.aboutMe.title') }}</h2>
+    <h2>{{ t('home.aboutMe.title') }}</h2>
     <div class="mt-4 text-center">
       <p v-for="line in lines">{{ line }}</p>
     </div>

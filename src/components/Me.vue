@@ -11,11 +11,9 @@ const { t } = useI18n()
       {{ t('home.me.title') }}<span class="font-extrabold text-blue-500"> Víctor Fernández</span>
     </h1>
     <div class="mt-6">
-      <h2>{{ t('home.me.description.0') }}</h2>
-      <h2>{{ t('home.me.description.1') }}</h2>
-      <h2
-        v-html="t('home.me.description.2', { company: '<a href=https://www.shuttlecloud.com>ShuttleCloud</a>' })"
-      ></h2>
+      <p>{{ t('home.me.description.0') }}</p>
+      <p>{{ t('home.me.description.1') }}</p>
+      <p v-html="t('home.me.description.2', { company: '<a href=https://www.shuttlecloud.com>ShuttleCloud</a>' })"></p>
     </div>
     <div class="mt-6 rounded-social-buttons">
       <a class="bg-transparent" target="_blank" href="https://twitter.com/victor141516"

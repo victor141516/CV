@@ -212,6 +212,20 @@ const es = {
         },
       ],
     },
+    links: {
+      title: 'Cosas que leo/veo',
+      descriptions: {
+        incolumitas: 'El blog de Nikolai Tschacher, un experto en scraping y detección de scrapers y bots',
+        LiveOverflow: 'Explica tanto conceptos de programación/hacking como casos prácticos de hacking',
+        Kofybrek:
+          'Un chico que hace vídeos graciosos de los proyectos que programa, explicando los problemas que ha tenido',
+        '3Blue1Brown': 'Explica conceptos matemáticos con animaciones muy fáciles de entender',
+        HackerNews: 'Una de las webs de noticias de ciencia, hacking y programación más conocidas',
+        MiduDev: 'Hace cursos de programación de frontend y explica bastante bien',
+        'Google Web Updates':
+          'La web de Google donde escriben sobre los últimos cambios tanto de estándares como de Chrome',
+      },
+    },
   },
 }
 const en = {
@@ -420,6 +434,18 @@ const en = {
           ],
         },
       ],
+    },
+    links: {
+      title: 'Stuff I read/watch',
+      descriptions: {
+        incolumitas: 'Nikolai Tschacher blog, an expert in scraping and scrapers and bots detection',
+        LiveOverflow: 'He explains both programming/hacking concepts and practical cases of hacking',
+        Kofybrek: "A guy who makes funny videos of the projects he works on, explaining the problems he's had",
+        '3Blue1Brown': 'Math concepts with very easy to understand animations',
+        HackerNews: 'One of the best-known science, hacking and programming news websites',
+        MiduDev: 'He does frontend programming courses and explains quite well',
+        'Google Web Updates': "Google's website where they write about the latest changes in both standards and Chrome",
+      },
     },
   },
 } as typeof es

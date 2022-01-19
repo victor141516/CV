@@ -34,7 +34,6 @@ const reposByTier = computed(() =>
     return acc
   }, [] as Repo[][]),
 )
-console.log(reposByTier.value)
 
 const showingTier = ref(1)
 const showMoreTier = () => (showingTier.value += 1)
@@ -46,7 +45,7 @@ function calculateFullListIndex(tier: number, index: number) {
 
 <template>
   <div class="py-12 flex flex-col items-center justify-center">
-    <h2 class="text-2xl font-bold">{{ t('home.stuffMade.title') }}</h2>
+    <h2>{{ t('home.stuffMade.title') }}</h2>
 
     <div class="mt-4 grid grid-cols-[3fr_2fr_repeat(6,1fr)] xl:w-2/3">
       <span class="flex items-center justify-center row-span-2 border-r border-slate-700 dark:border-white">{{
