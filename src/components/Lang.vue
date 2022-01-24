@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue'
+import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import esFlag from '../assets/es-flag.png'
-import enFlag from '../assets/en-flag.png'
 
 const { locale } = useI18n()
-const newLang = computed(() => ({ es: enFlag, en: esFlag }[locale.value]))
+const swapDirection = { es: 'en', en: 'es' } as Record<string, string>
 const changeLocale = () => {
-  const newLocale = { es: 'en', en: 'es' }[locale.value]!
+  const newLocale = swapDirection[locale.value]!
   locale.value = newLocale
 }
 watch(
@@ -23,8 +21,12 @@ watch(
   <div class="cursor-pointer flex aspect-auto w-12">
     <img
       @click="changeLocale"
-      :src="newLang"
+      :src="`/${swapDirection[locale]}-flag.png`"
+      :alt="`${swapDirection[locale]} flag`"
       class="transition-transform hover:translate-y-1 hover:scale-110 hover:rotate-6"
+      height="40"
+      width="40"
+      loading="lazy"
     />
   </div>
 </template>

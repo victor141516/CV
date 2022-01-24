@@ -70,7 +70,7 @@ function calculateFullListIndex(tier: number, index: number) {
       <template v-for="(tierGroup, tier) in reposByTier">
         <template v-if="tier <= showingTier" v-for="({ name, url, date, features }, index) in tierGroup">
           <div class="col-start-1 flex items-center">
-            <a class="flex-1 flex items-center justify-center" target="_blank" :href="url">
+            <a class="flex-1 flex items-center justify-center" target="_blank" :href="url" rel="noopener">
               <div class="rounded-social-buttons scale-50">
                 <span class="bg-transparent"
                   ><span class="social-button github hover:!transform-none before:text-[65px]"></span

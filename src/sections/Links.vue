@@ -66,12 +66,12 @@ const links: LinkItem[] = [
         <div
           class="h-full rounded-lg bg-slate-200 dark:bg-gray-900 border-slate-200 border dark:border-slate-700 shadow hover:shadow-xl transition-shadow"
         >
-          <a :href="link">
+          <a :href="link" rel="noopener">
             <div
               class="px-4 py-3 bg-slate-100 dark:bg-slate-700 rounded-t-lg flex flex-col items-center justify-center"
             >
               <figure>
-                <img :src="image" :alt="title" class="w-24 rounded-full mx-auto" />
+                <img :src="image" :alt="title" class="rounded-full mx-auto" height="120" width="120" loading="lazy" />
                 <figcaption class="text-center">{{ title }}</figcaption>
               </figure>
             </div>

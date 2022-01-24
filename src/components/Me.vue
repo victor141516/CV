@@ -6,7 +6,7 @@ const { t } = useI18n()
 
 <template>
   <div class="flex flex-col items-center text-center">
-    <img class="rounded-full w-40" src="../assets/me.jpg" alt="Víctor Fernández" />
+    <img class="rounded-full" src="/me.jpg" alt="Víctor Fernández" width="200" height="200" />
     <h1 class="mt-2 text-4xl md:text-6xl font-bold">
       {{ t('home.me.title') }}<span class="font-extrabold text-blue-500"> Víctor Fernández</span>
     </h1>
@@ -16,21 +16,26 @@ const { t } = useI18n()
       <p v-html="t('home.me.description.2', { company: '<a href=https://www.shuttlecloud.com>ShuttleCloud</a>' })"></p>
     </div>
     <div class="mt-6 rounded-social-buttons">
-      <a class="bg-transparent" target="_blank" href="https://twitter.com/victor141516"
-        ><span class="social-button twitter"></span
-      ></a>
-      <a class="bg-transparent" target="_blank" href="https://www.linkedin.com/in/victor-fernandez-gabriel-8850baaa/"
-        ><span class="social-button linkedin"></span
-      ></a>
-      <a class="bg-transparent" target="_blank" href="https://github.com/victor141516"
-        ><span class="social-button github before:text-[50px]"></span
-      ></a>
-      <a class="bg-transparent" target="_blank" href="https://t.me/victor141516"
-        ><span class="social-button telegram before:text-[50px]"></span
-      ></a>
-      <a class="bg-transparent" target="_blank" href="mailto:victor.fernandez.gabriel@gmail.com"
-        ><span class="social-button email"></span
-      ></a>
+      <a
+        class="bg-transparent"
+        target="_blank"
+        href="https://www.linkedin.com/in/victor-fernandez-gabriel-8850baaa/"
+        rel="noopener"
+      >
+        <span class="social-button linkedin"></span>
+      </a>
+      <a class="bg-transparent" target="_blank" href="https://github.com/victor141516" rel="noopener">
+        <span class="social-button github before:text-[50px]"></span>
+      </a>
+      <a class="bg-transparent" target="_blank" href="mailto:victor.fernandez.gabriel@gmail.com" rel="noopener">
+        <span class="social-button email"></span>
+      </a>
+      <a class="bg-transparent" target="_blank" href="https://t.me/victor141516" rel="noopener">
+        <span class="social-button telegram before:text-[50px]"></span>
+      </a>
+      <a class="bg-transparent" target="_blank" href="https://twitter.com/victor141516" rel="noopener">
+        <span class="social-button twitter"></span>
+      </a>
     </div>
   </div>
 </template>

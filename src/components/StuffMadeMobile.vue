@@ -43,7 +43,7 @@ const { t } = useI18n()
     <div class="flex flex-row flex-nowrap overflow-x-auto snap-x px-[10vw]">
       <article v-for="repo in repos" class="snap-center min-w-[75vw] min-h-max mx-2">
         <header class="mb-0 py-1 flex items-center">
-          <a class="flex-1 flex items-center" target="_blank" :href="repo.url"
+          <a class="flex-1 flex items-center" target="_blank" :href="repo.url" rel="noopener"
             ><div class="rounded-social-buttons scale-50">
               <span class="bg-transparent"
                 ><span class="social-button github hover:!transform-none before:text-[65px]"></span
