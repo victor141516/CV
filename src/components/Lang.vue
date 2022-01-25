@@ -19,14 +19,23 @@ watch(
 
 <template>
   <div class="cursor-pointer flex aspect-auto w-12">
-    <img
+    <picture
       @click="changeLocale"
-      :src="`/${swapDirection[locale]}-flag.png`"
       :alt="`${swapDirection[locale]} flag`"
       class="transition-transform hover:translate-y-1 hover:scale-110 hover:rotate-6"
       height="40"
       width="40"
       loading="lazy"
-    />
+    >
+      <source :srcset="`/${swapDirection[locale]}-flag.webp`" type="image/webp" />
+      <source :srcset="`/${swapDirection[locale]}-flag.png`" type="image/png" />
+      <img
+        :src="`/${swapDirection[locale]}-flag.png`"
+        :alt="`${swapDirection[locale]} flag`"
+        height="40"
+        width="40"
+        loading="lazy"
+      />
+    </picture>
   </div>
 </template>

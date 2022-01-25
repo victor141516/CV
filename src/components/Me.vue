@@ -6,7 +6,11 @@ const { t } = useI18n()
 
 <template>
   <div class="flex flex-col items-center text-center">
-    <img class="rounded-full" src="/me.jpg" alt="Víctor Fernández" width="200" height="200" />
+    <picture class="rounded-full" alt="Víctor Fernández" width="200" height="200">
+      <source srcset="/me.webp" type="image/webp" />
+      <source srcset="/me.jpg" type="image/jpg" />
+      <img class="rounded-full" src="/me.jpg" alt="Víctor Fernández" width="200" height="200" />
+    </picture>
     <h1 class="mt-2 text-4xl md:text-6xl font-bold">
       {{ t('home.me.title') }}<span class="font-extrabold text-blue-500"> Víctor Fernández</span>
     </h1>
@@ -17,21 +21,21 @@ const { t } = useI18n()
     </div>
     <div class="mt-6 rounded-social-buttons">
       <a
-        class="bg-transparent"
+        class="bg-transparent mr-1"
         target="_blank"
         href="https://www.linkedin.com/in/victor-fernandez-gabriel-8850baaa/"
         rel="noopener"
       >
         <span class="social-button linkedin"></span>
       </a>
-      <a class="bg-transparent" target="_blank" href="https://github.com/victor141516" rel="noopener">
-        <span class="social-button github before:text-[50px]"></span>
+      <a class="bg-transparent mr-1" target="_blank" href="https://github.com/victor141516" rel="noopener">
+        <span class="social-button github"></span>
       </a>
-      <a class="bg-transparent" target="_blank" href="mailto:victor.fernandez.gabriel@gmail.com" rel="noopener">
+      <a class="bg-transparent mr-1" target="_blank" href="mailto:victor.fernandez.gabriel@gmail.com" rel="noopener">
         <span class="social-button email"></span>
       </a>
-      <a class="bg-transparent" target="_blank" href="https://t.me/victor141516" rel="noopener">
-        <span class="social-button telegram before:text-[50px]"></span>
+      <a class="bg-transparent mr-1" target="_blank" href="https://t.me/victor141516" rel="noopener">
+        <span class="social-button telegram"></span>
       </a>
       <a class="bg-transparent" target="_blank" href="https://twitter.com/victor141516" rel="noopener">
         <span class="social-button twitter"></span>
@@ -41,30 +45,28 @@ const { t } = useI18n()
 </template>
 
 <style lang="scss">
-$social-button-size: 3.125rem;
-$social-button-border-width: 0.125rem;
-$social-button-font-size: 1.5625rem;
-$social-button-line-height: 2em;
-$social-button-border-radius: 1.6875rem;
-$social-button-margin: 0.25rem;
+$social-button-scale: 1rem;
+$social-button-size: 4 * $social-button-scale;
+$social-button-border-width: 1 * $social-button-scale;
+$social-button-font-size: 2 * $social-button-scale;
 
 $social-brand-twitter: #55acee;
 $social-brand-linkedin: #007bb5;
 $social-brand-github: #000000;
 $social-brand-email: #32506d;
 $social-brand-telegram: #0088cc;
-$white: #fff;
 
-@mixin social-button($brand-color, $brand-icon) {
+@mixin social-button($brand-color, $brand-icon, $icon-size) {
   background: $brand-color;
 
   &:before {
     font-family: 'FontAwesome';
     content: $brand-icon;
+    font-size: $icon-size;
   }
   &:hover {
     color: $brand-color;
-    background: $white;
+    background: white;
     border-color: $brand-color;
   }
 }
@@ -77,36 +79,31 @@ $white: #fff;
     cursor: pointer;
     width: $social-button-size;
     height: $social-button-size;
-    border: $social-button-border-width solid transparent;
     padding: 0;
     text-decoration: none;
     text-align: center;
-    color: $white;
-    font-size: $social-button-font-size;
+    color: white;
     font-weight: normal;
-    line-height: $social-button-line-height;
-    border-radius: $social-button-border-radius;
-    margin-right: $social-button-margin;
-    margin-bottom: $social-button-margin;
+    border-radius: 100%;
 
     &.twitter {
-      @include social-button($social-brand-twitter, '\f099');
+      @include social-button($social-brand-twitter, '\f099', $social-button-font-size);
     }
 
     &.linkedin {
-      @include social-button($social-brand-linkedin, '\f0e1');
+      @include social-button($social-brand-linkedin, '\f0e1', $social-button-font-size);
     }
 
     &.github {
-      @include social-button($social-brand-github, '\f09b');
+      @include social-button($social-brand-github, '\f09b', 2 * $social-button-font-size);
     }
 
     &.telegram {
-      @include social-button($social-brand-telegram, '\f3fe');
+      @include social-button($social-brand-telegram, '\f3fe', 2 * $social-button-font-size);
     }
 
     &.email {
-      @include social-button($social-brand-email, '\f01c');
+      @include social-button($social-brand-email, '\f01c', $social-button-font-size);
     }
   }
 }

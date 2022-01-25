@@ -14,45 +14,45 @@ const links: LinkItem[] = [
   {
     title: 'incolumitas',
     link: 'https://incolumitas.com/',
-    image: 'incolumnitas.jpg',
+    image: 'incolumnitas',
     description: 'El blog de Nikolai Tschacher, un experto en scraping y detección de scrapers y bots',
   },
   {
     title: 'LiveOverflow',
     link: 'https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w',
-    image: 'LiveOverflow.jpg',
+    image: 'LiveOverflow',
     description: 'Explica tanto conceptos de programación/hacking como casos prácticos de hacking',
   },
   {
     title: 'Kofybrek',
     link: 'https://www.youtube.com/c/Kofybrek',
-    image: 'Kofybrek.jpg',
+    image: 'Kofybrek',
     description:
       'Un chico que hace vídeos graciosos de los proyectos que programa, explicando los problemas que ha tenido',
   },
   {
     title: '3Blue1Brown',
     link: 'https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw',
-    image: '3Blue1Brown.jpg',
+    image: '3Blue1Brown',
     description: 'Explica conceptos matemáticos con animaciones muy fáciles de entender',
   },
   {
     title: 'HackerNews',
     link: 'https://news.ycombinator.com/',
-    image: 'hackernews.png',
+    image: 'hackernews',
     description: 'Una de las webs de noticias de ciencia, hacking y programación más conocidas',
   },
   {
     title: 'MiduDev',
     link: 'https://midu.dev/',
-    image: 'midudev.jpg',
+    image: 'midudev',
     description: 'Hace cursos de programación de frotend y explica bastante bien',
   },
 
   {
     title: 'Google Web Updates',
     link: 'https://developers.google.com/web',
-    image: 'webdev.png',
+    image: 'webdev',
     description: 'La web de Google donde escriben sobre los últimos cambios tanto de estándares como de Chrome',
   },
 ]
@@ -71,8 +71,19 @@ const links: LinkItem[] = [
               class="px-4 py-3 bg-slate-100 dark:bg-slate-700 rounded-t-lg flex flex-col items-center justify-center"
             >
               <figure>
-                <img :src="image" :alt="title" class="rounded-full mx-auto" height="120" width="120" loading="lazy" />
-                <figcaption class="text-center">{{ title }}</figcaption>
+                <picture class="rounded-full mx-auto" :alt="title" width="120" height="120" loading="lazy">
+                  <source :srcset="`/${image}.webp`" type="image/webp" />
+                  <source :srcset="`/${image}.jpg`" type="image/jpg" />
+                  <img
+                    class="rounded-full mx-auto"
+                    src="/me.jpg"
+                    :alt="title"
+                    width="120"
+                    height="120"
+                    loading="lazy"
+                  />
+                </picture>
+                <figcaption class="text-center text-gray-600 dark:text-gray-300">{{ title }}</figcaption>
               </figure>
             </div>
             <div class="px-4 py-3">

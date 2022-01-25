@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 a {
-  @apply text-sky-600 dark:text-cyan-600;
+  @apply text-sky-800 dark:text-blue-300;
+}
+
+code {
+  @apply text-gray-800 dark:text-gray-200 dark:bg-gray-700;
 }
 
 .vi-bg-odd {
