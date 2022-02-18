@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { CV_PDF_URL } from '../utils/constants'
 
 const { t } = useI18n()
 </script>
@@ -11,9 +12,18 @@ const { t } = useI18n()
       <source srcset="/me.jpg" type="image/jpg" />
       <img class="rounded-full" src="/me.jpg" alt="Víctor Fernández" width="200" height="200" />
     </picture>
-    <h1 class="mt-2 text-4xl md:text-6xl font-bold">
-      {{ t('home.me.title') }}<span class="font-extrabold text-blue-500"> Víctor Fernández</span>
+    <h1 class="mt-2 text-4xl md:text-6xl font-bold xl:whitespace-nowrap">
+      {{ t('home.me.title')
+      }}<span class="relative">
+        <a :href="CV_PDF_URL" class="font-extrabold select-none" target="_blank"> Víctor Fernández</a>
+        <picture loading="lazy" class="pdf-chalk">
+          <source srcset="/chalk.webp" type="image/webp" />
+          <source srcset="/chalk.png" type="image/png" />
+          <img src="/chalk.png" alt="Chalk" width="213" height="260" loading="lazy" />
+        </picture>
+      </span>
     </h1>
+
     <div class="mt-6">
       <p>{{ t('home.me.description.0') }}</p>
       <p>{{ t('home.me.description.1') }}</p>
@@ -105,6 +115,13 @@ $social-brand-telegram: #0088cc;
     &.email {
       @include social-button($social-brand-email, '\f01c', $social-button-font-size);
     }
+  }
+}
+
+.pdf-chalk {
+  @apply absolute w-20 -top-20 ml-3 -rotate-12 sm:-ml-20 md:w-30 md:ml-8 md:rotate-0 lg:ml-8 xl:-ml-15;
+  @media (min-width: 529px) and (max-width: 640px) {
+    @apply -ml-18;
   }
 }
 </style>

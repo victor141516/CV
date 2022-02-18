@@ -5,6 +5,7 @@ import '@picocss/pico/css/pico.classless.min.css'
 import './index.scss'
 import App from './App.vue'
 import { texts, preferredLanguage } from './i18n'
+import { useCapturePrint } from './utils/keyboard'
 
 const i18n = createI18n({
   legacy: false,
@@ -15,3 +16,5 @@ const i18n = createI18n({
 const app = createApp(App)
 app.use(i18n)
 app.mount('#app')
+
+useCapturePrint()

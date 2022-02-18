@@ -112,6 +112,17 @@ const es = {
                     'Le dediqué mucho esfuerzo a reducir la fricción en el proceso de añadir los datos de los menús',
                   ],
                 },
+                {
+                  name: 'GSuite Promo Codes',
+                  description:
+                    'Fue un experimento en el que usamos una web con la que se podían obtener códigos de descuento de la (entonces llamada) GSuite. Cuando esos códigos se usaban nos datan un porcentaje de la suscripción',
+                  bullets: [
+                    'La forma de solicitar los códigos era mediante una web en la que tenías que poner tu dirección de correo electrónico',
+                    'Los códigos llegaban a través de un email, así que había que scrapear esos emails',
+                    'Todo el proceso era automático',
+                    'Con el tiempo acabó dando bastantes beneficios',
+                  ],
+                },
               ],
             },
             {
@@ -334,6 +345,17 @@ const en = {
                     'We also used Laravel for this project',
                     'This time frontend was a mobile app made with Angular.js and Ionic, which had just been released.',
                     'I put a lot of effort into reducing the friction in the process of adding the menu data',
+                  ],
+                },
+                {
+                  name: 'GSuite Promo Codes',
+                  description:
+                    'It was an experiment where we used a website where you could get discount codes for the (then called) GSuite. When those codes were used, Google gave us back a percentage of the subscription',
+                  bullets: [
+                    'The way to request the codes was through a website where you had to put an email address',
+                    'The codes arrived through an email, so you had to scrape those emails',
+                    'All the process was fully automated',
+                    'It ended up giving quite a few benefits in the long run',
                   ],
                 },
               ],

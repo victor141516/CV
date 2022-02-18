@@ -53,6 +53,17 @@ function setTimeline() {
                 t('home.work.timeline.1.periods.0.events.1.bullets.2'),
               ],
             },
+            {
+              timestamp: p('2017-02'),
+              name: t('home.work.timeline.1.periods.0.events.2.name'),
+              description: t('home.work.timeline.1.periods.0.events.2.description'),
+              bullets: [
+                t('home.work.timeline.1.periods.0.events.2.bullets.0'),
+                t('home.work.timeline.1.periods.0.events.2.bullets.1'),
+                t('home.work.timeline.1.periods.0.events.2.bullets.2'),
+                t('home.work.timeline.1.periods.0.events.2.bullets.3'),
+              ],
+            },
           ],
         },
         {
