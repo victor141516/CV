@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { CV_PDF_URL } from '../utils/constants'
+import { useDarkMode } from '../utils/screen'
 
 const { t } = useI18n()
+const darkMode = useDarkMode()
 </script>
 
 <template>
@@ -15,11 +17,13 @@ const { t } = useI18n()
     <h1 class="mt-2 text-4xl md:text-6xl font-bold xl:whitespace-nowrap">
       {{ t('home.me.title')
       }}<span class="relative">
-        <a :href="CV_PDF_URL" class="font-extrabold select-none" target="_blank"> Víctor Fernández</a>
+        <a :href="CV_PDF_URL" class="font-extrabold select-none" target="_blank" download="Victor Fernandez - CV.pdf">
+          Víctor Fernández</a
+        >
         <picture loading="lazy" class="pdf-chalk">
-          <source srcset="/chalk.webp" type="image/webp" />
-          <source srcset="/chalk.png" type="image/png" />
-          <img src="/chalk.png" alt="Chalk" width="213" height="260" loading="lazy" />
+          <source :srcset="`/chalk${darkMode ? '' : '-black'}.webp`" type="image/webp" />
+          <source :srcset="`/chalk${darkMode ? '' : '-black'}.png`" type="image/png" />
+          <img :src="`/chalk${darkMode ? '' : '-black'}.png`" alt="Chalk" width="213" height="260" loading="lazy" />
         </picture>
       </span>
     </h1>
