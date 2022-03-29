@@ -1,10 +1,20 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { CV_PDF_URL } from '../utils/constants'
+import { CV_PDF_URL, SOCIAL_LINKS } from '../utils/constants'
 import { useDarkMode } from '../utils/screen'
+import { socialImages } from '../utils/socialImages'
+import {socialItems} from '../utils/types'
 
 const { t } = useI18n()
 const darkMode = useDarkMode()
+
+const socialExtraClasses = {
+  github: 'mr-1',
+  inbox: 'bg-[#32506d] p-2 mr-1',
+  linkedIn: 'bg-[#0A66C2] p-3 mr-1',
+  telegram: 'bg-white mr-1',
+  twitter: 'bg-[#1D9BF0] p-3',
+}
 </script>
 
 <template>
@@ -15,15 +25,26 @@ const darkMode = useDarkMode()
       <img class="rounded-full" src="/me.jpg" alt="Víctor Fernández" width="200" height="200" />
     </picture>
     <h1 class="mt-2 text-4xl md:text-6xl font-bold xl:whitespace-nowrap">
-      {{ t('home.me.title')
-      }}<span class="relative">
-        <a :href="CV_PDF_URL" class="font-extrabold select-none" target="_blank" download="Victor Fernandez - CV.pdf">
-          Víctor Fernández</a
-        >
+      {{
+        t('home.me.title')
+      }}
+      <span class="relative">
+        <a
+          :href="CV_PDF_URL"
+          class="font-extrabold select-none"
+          target="_blank"
+          download="Victor Fernandez - CV.pdf"
+        >Víctor Fernández</a>
         <picture loading="lazy" class="pdf-chalk">
           <source :srcset="`/chalk${darkMode ? '' : '-black'}.webp`" type="image/webp" />
           <source :srcset="`/chalk${darkMode ? '' : '-black'}.png`" type="image/png" />
-          <img :src="`/chalk${darkMode ? '' : '-black'}.png`" alt="Chalk" width="213" height="260" loading="lazy" />
+          <img
+            :src="`/chalk${darkMode ? '' : '-black'}.png`"
+            alt="Chalk"
+            width="213"
+            height="260"
+            loading="lazy"
+          />
         </picture>
       </span>
     </h1>
@@ -31,94 +52,32 @@ const darkMode = useDarkMode()
     <div class="mt-6">
       <p>{{ t('home.me.description.0') }}</p>
       <p>{{ t('home.me.description.1') }}</p>
-      <p v-html="t('home.me.description.2', { company: '<a href=https://www.shuttlecloud.com>ShuttleCloud</a>' })"></p>
+      <p
+        v-html="t('home.me.description.2', { company: '<a href=https://www.shuttlecloud.com>ShuttleCloud</a>' })"
+      ></p>
     </div>
     <div class="mt-6 rounded-social-buttons">
       <a
-        class="bg-transparent mr-1"
+        class="social-button"
+        :class="socialExtraClasses[social]"
         target="_blank"
-        href="https://www.linkedin.com/in/victor-fernandez-gabriel-8850baaa/"
         rel="noopener"
-      >
-        <span class="social-button linkedin"></span>
-      </a>
-      <a class="bg-transparent mr-1" target="_blank" href="https://github.com/victor141516" rel="noopener">
-        <span class="social-button github"></span>
-      </a>
-      <a class="bg-transparent mr-1" target="_blank" href="mailto:victor.fernandez.gabriel@gmail.com" rel="noopener">
-        <span class="social-button email"></span>
-      </a>
-      <a class="bg-transparent mr-1" target="_blank" href="https://t.me/victor141516" rel="noopener">
-        <span class="social-button telegram"></span>
-      </a>
-      <a class="bg-transparent" target="_blank" href="https://twitter.com/victor141516" rel="noopener">
-        <span class="social-button twitter"></span>
-      </a>
+        v-html="socialImages[social]"
+        :href="SOCIAL_LINKS[social]"
+        v-for="social of socialItems"
+      ></a>
     </div>
   </div>
 </template>
 
 <style lang="scss">
-$social-button-scale: 1rem;
-$social-button-size: 4 * $social-button-scale;
-$social-button-border-width: 1 * $social-button-scale;
-$social-button-font-size: 2 * $social-button-scale;
-
-$social-brand-twitter: #55acee;
-$social-brand-linkedin: #007bb5;
-$social-brand-github: #000000;
-$social-brand-email: #32506d;
-$social-brand-telegram: #0088cc;
-
-@mixin social-button($brand-color, $brand-icon, $icon-size) {
-  background: $brand-color;
-
-  &:before {
-    font-family: 'FontAwesome';
-    content: $brand-icon;
-    font-size: $icon-size;
-  }
-  &:hover {
-    color: $brand-color;
-    background: white;
-    border-color: $brand-color;
-  }
-}
-
 .rounded-social-buttons {
-  @apply text-center flex;
+  @apply flex;
 
   .social-button {
-    @apply flex items-center justify-center hover:-translate-y-1 transition-transform;
-    cursor: pointer;
-    width: $social-button-size;
-    height: $social-button-size;
-    padding: 0;
-    text-decoration: none;
-    text-align: center;
-    color: white;
-    font-weight: normal;
-    border-radius: 100%;
-
-    &.twitter {
-      @include social-button($social-brand-twitter, '\f099', $social-button-font-size);
-    }
-
-    &.linkedin {
-      @include social-button($social-brand-linkedin, '\f0e1', $social-button-font-size);
-    }
-
-    &.github {
-      @include social-button($social-brand-github, '\f09b', 2 * $social-button-font-size);
-    }
-
-    &.telegram {
-      @include social-button($social-brand-telegram, '\f3fe', 2 * $social-button-font-size);
-    }
-
-    &.email {
-      @include social-button($social-brand-email, '\f01c', $social-button-font-size);
-    }
+    @apply flex items-center justify-center rounded-full cursor-pointer hover:-translate-y-1 transition-transform;
+    width: 64px;
+    height: 64px;
   }
 }
 
