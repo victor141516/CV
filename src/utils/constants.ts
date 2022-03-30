@@ -1,6 +1,6 @@
 import { socialItems } from './types'
 
-export const CV_PDF_URL = 'https://mfus.tk/Qw'
+export const CV_PDF_URL = 'https://drive.google.com/file/d/11F00T1jww_lgs00QoCElneJ5pVHk6vY0/view?usp=sharing'
 
 export const SOCIAL_LINKS: { [key in socialItems]: string } = {
   github: 'https://github.com/victor141516',

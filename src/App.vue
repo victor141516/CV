@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue'
 import Head from './sections/Head.vue'
-
-const AboutMe = defineAsyncComponent(() => import('./sections/AboutMe.vue'))
-const Links = defineAsyncComponent(() => import('./sections/Links.vue'))
-const StuffMade = defineAsyncComponent(() => import('./sections/StuffMade.vue'))
-const Work = defineAsyncComponent(() => import('./sections/Work.vue'))
+import AboutMe from './sections/AboutMe.vue'
+import Links from './sections/Links.vue'
+import StuffMade from './sections/StuffMade.vue'
+import Work from './sections/Work.vue'
 </script>
 
 <template>
