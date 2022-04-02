@@ -49,7 +49,7 @@ const socialExtraClasses = {
         :class="socialExtraClasses[social]"
         target="_blank"
         rel="noopener"
-        v-html="socialImages[social].value"
+        v-html="socialImages[social]"
         :href="SOCIAL_LINKS[social]"
         v-for="social of socialItems"
       ></a>
