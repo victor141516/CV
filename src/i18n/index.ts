@@ -1,6 +1,22 @@
 import { usePreferredLanguages } from '@vueuse/core'
 import { ref } from 'vue'
 
+interface TimelineEvent {
+  name: string
+  description: string
+  bullets?: string[]
+}
+
+interface TimelineItem {
+  name: string
+  events?: TimelineEvent[]
+  periods?: TimelineItem[]
+}
+interface Timeline {
+  title: string
+  timeline: TimelineItem[]
+}
+
 const es = {
   home: {
     me: {
@@ -221,8 +237,22 @@ const es = {
             },
           ],
         },
+        {
+          name: 'Revieve',
+          periods: [
+            {
+              name: 'Primeros meses',
+              events: [
+                {
+                  name: 'Inicio',
+                  description: 'Empiezo a trabajar en Revieve como Senior Full-Stack Developer',
+                },
+              ],
+            },
+          ],
+        },
       ],
-    },
+    } as Timeline,
     links: {
       title: 'Cosas que leo/veo',
       descriptions: {
@@ -455,6 +485,20 @@ const en = {
             },
           ],
         },
+        {
+          name: 'Revieve',
+          periods: [
+            {
+              name: 'First months',
+              events: [
+                {
+                  name: 'Begin',
+                  description: 'My first day at Revieve as Full-Stack Developer',
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
     links: {
@@ -471,6 +515,8 @@ const en = {
     },
   },
 } as typeof es
+
+console.log({ es })
 
 export const texts = { es, en }
 export const preferredLanguage = ref(usePreferredLanguages().value[0].split('-')[0])

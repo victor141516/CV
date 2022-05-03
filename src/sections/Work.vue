@@ -172,6 +172,23 @@ function setTimeline() {
         },
       ],
     },
+    {
+      name: t('home.work.timeline.2.name'),
+      start: p('2022-05'),
+      periods: [
+        {
+          name: t('home.work.timeline.2.periods.0.name'),
+          start: p('2022-05'),
+          events: [
+            {
+              timestamp: p('2022-05'),
+              name: t('home.work.timeline.2.periods.0.events.0.name'),
+              description: t('home.work.timeline.2.periods.0.events.0.description'),
+            },
+          ],
+        },
+      ],
+    },
   ]
 }
 

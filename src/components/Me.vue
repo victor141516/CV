@@ -41,7 +41,7 @@ const socialExtraClasses = {
     <div class="mt-6">
       <p>{{ t('home.me.description.0') }}</p>
       <p>{{ t('home.me.description.1') }}</p>
-      <p v-html="t('home.me.description.2', { company: '<a href=https://www.shuttlecloud.com>ShuttleCloud</a>' })"></p>
+      <p v-html="t('home.me.description.2', { company: '<a href=https://www.revieve.com/>Revieve</a>' })"></p>
     </div>
     <div class="mt-6 rounded-social-buttons">
       <a
