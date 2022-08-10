@@ -125,7 +125,7 @@ const columnWidthPx = computed(() => `${columnWidth.value}${columnWidth.value ==
           class="col-start-1 m-0 px-4 pb-4 transition-all w-[500px] h-max max-w-[500px]"
           :style="`grid-row-start: ${i + 1}`"
         >
-          <header class="py-2 font-bold">
+          <header class="py-2 -mx-4 font-bold">
             <span>{{ event.name }}</span>
           </header>
           <p class="-mt-5 text-md">{{ event.description }}</p>
