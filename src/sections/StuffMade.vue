@@ -1,4 +1,12 @@
 <script setup lang="ts">
+export type Repo = {
+  name: string
+  url: string
+  date: number
+  features: number[]
+  tier: number
+}
+
 import StuffMadeDesktop from '../components/StuffMadeDesktop.vue'
 import StuffMadeMobile from '../components/StuffMadeMobile.vue'
 
@@ -9,14 +17,6 @@ const FEATURES = {
   Node: 4,
   Python: 5,
   Docker: 6,
-}
-
-export type Repo = {
-  name: string
-  url: string
-  date: number
-  features: number[]
-  tier: number
 }
 
 const repos = [
