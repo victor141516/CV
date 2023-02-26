@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { ViteSSG } from 'vite-ssg/single-page'
 import { createI18n } from 'vue-i18n'
 import '@picocss/pico/css/pico.classless.min.css'
 
@@ -13,8 +13,7 @@ const i18n = createI18n({
   messages: texts,
 })
 
-const app = createApp(App)
-app.use(i18n)
-app.mount('#app')
-
-useCapturePrint()
+export const createApp = ViteSSG(App, ({ app, isClient }) => {
+  app.use(i18n)
+  if (isClient) useCapturePrint()
+})

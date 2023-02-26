@@ -5,7 +5,7 @@ import { useDarkMode } from '../utils/screen'
 import { socialImages } from '../utils/socialImages'
 import { socialItems } from '../utils/types'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const darkMode = useDarkMode()
 
 const socialExtraClasses = {
@@ -24,21 +24,19 @@ const socialExtraClasses = {
       <source srcset="/me.jpg" type="image/jpg" />
       <img class="rounded-full" src="/me.jpg" alt="Víctor Fernández" width="200" height="200" />
     </picture>
-    <h1 class="mt-2 text-4xl md:text-6xl font-bold xl:whitespace-nowrap">
+    <h1 class="mt-2 text-4xl md:text-6xl font-bold xl:whitespace-nowrap relative">
       {{ t('home.me.title') }}
-      <span class="relative">
-        <a :href="CV_PDF_URL" class="font-extrabold select-none" target="_blank" download="Victor Fernandez - CV.pdf"
-          >Víctor Fernández</a
-        >
-        <picture loading="lazy" class="pdf-chalk">
-          <source :srcset="`/chalk${darkMode ? '' : '-black'}.webp`" type="image/webp" />
-          <source :srcset="`/chalk${darkMode ? '' : '-black'}.png`" type="image/png" />
-          <img :src="`/chalk${darkMode ? '' : '-black'}.png`" alt="Chalk" width="213" height="260" loading="lazy" />
-        </picture>
-      </span>
+      <a :href="CV_PDF_URL" class="font-extrabold select-none" target="_blank" download="Victor Fernandez - CV.pdf"
+        >Víctor <br class="block xl:hidden" />Fernández</a
+      >
+      <picture loading="lazy" class="pdf-chalk" :class="locale">
+        <source :srcset="`/chalk${darkMode ? '' : '-black'}.webp`" type="image/webp" />
+        <source :srcset="`/chalk${darkMode ? '' : '-black'}.png`" type="image/png" />
+        <img :src="`/chalk${darkMode ? '' : '-black'}.png`" alt="Chalk" width="213" height="260" loading="lazy" />
+      </picture>
     </h1>
 
-    <div class="mt-6">
+    <div class="mt-6 h-[10em] [@media(min-width:400px)_and_(max-width:640px)]:h-[8em] sm:h-[6em]">
       <p>{{ t('home.me.description.0') }}</p>
       <p>{{ t('home.me.description.1') }}</p>
       <p v-html="t('home.me.description.2', { company: '<a href=https://www.revieve.com/>Revieve</a>' })"></p>
@@ -69,9 +67,18 @@ const socialExtraClasses = {
 }
 
 .pdf-chalk {
-  @apply absolute w-20 -top-20 ml-3 -rotate-12 sm:-ml-20 md:w-30 md:ml-8 md:rotate-0 lg:ml-8 xl:-ml-15;
-  @media (min-width: 529px) and (max-width: 640px) {
-    @apply -ml-18;
+  @apply absolute w-20 -top-20 -rotate-12
+    md:w-30 md:rotate-0 md:-mt-4;
+
+  &.es {
+    @apply ml-0 sm:ml-0 md:ml-5;
+  }
+
+  &.en {
+    @apply mt-3 -ml-3 rotate-12
+      sm:rotate-12
+      md:-mt-5 md:-ml-5 md:rotate-0
+      lg:-ml-10;
   }
 }
 </style>

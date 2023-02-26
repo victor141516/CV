@@ -14,8 +14,11 @@ code {
   @apply bg-white;
 }
 
-body.dark .vi-bg-odd {
-  background-color: var(--background-color);
+html.dark,
+body.html {
+  .vi-bg-odd {
+    background-color: var(--background-color);
+  }
 }
 
 .vi-bg-even {

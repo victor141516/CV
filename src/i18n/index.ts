@@ -516,7 +516,5 @@ const en = {
   },
 } as typeof es
 
-console.log({ es })
-
 export const texts = { es, en }
 export const preferredLanguage = ref(usePreferredLanguages().value[0].split('-')[0])

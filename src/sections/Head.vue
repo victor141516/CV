@@ -8,7 +8,7 @@ import { height } from '../utils/screen'
   <div class="w-full">
     <div
       class="flex flex-col w-11/12 md:w-3/4 2xl:w-1/2 mx-auto"
-      :style="`height: ${height ? height + 'px' : '100vh'}`"
+      :style="`height: ${height && Number.isFinite(height) ? height + 'px' : '100vh'}`"
     >
       <HeaderPrefs class="ml-auto px-2"></HeaderPrefs>
       <div class="flex-1 flex justify-center pb-[10%]">
