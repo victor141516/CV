@@ -1,10 +1,10 @@
+import '@picocss/pico/css/pico.classless.min.css'
 import { ViteSSG } from 'vite-ssg/single-page'
 import { createI18n } from 'vue-i18n'
-import '@picocss/pico/css/pico.classless.min.css'
 
-import './index.scss'
 import App from './App.vue'
-import { texts, preferredLanguage } from './i18n'
+import { preferredLanguage, texts } from './i18n'
+import './index.scss'
 import { useCapturePrint } from './utils/keyboard'
 
 const i18n = createI18n({
@@ -15,5 +15,7 @@ const i18n = createI18n({
 
 export const createApp = ViteSSG(App, ({ app, isClient }) => {
   app.use(i18n)
-  if (isClient) useCapturePrint()
+  if (isClient) {
+    useCapturePrint()
+  }
 })
