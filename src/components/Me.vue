@@ -26,7 +26,11 @@ const socialExtraClasses = {
     </picture>
     <h1 class="mt-2 text-4xl md:text-6xl font-bold xl:whitespace-nowrap relative">
       {{ t('home.me.title') }}
-      <a :href="CV_PDF_URL" class="font-extrabold select-none" target="_blank" download="Victor Fernandez - CV.pdf"
+      <a
+        :href="CV_PDF_URL[locale as 'es' | 'en'] ?? CV_PDF_URL.en"
+        class="font-extrabold select-none"
+        target="_blank"
+        download="Victor Fernandez - CV.pdf"
         >Víctor <br class="block xl:hidden" />Fernández</a
       >
       <picture loading="lazy" class="pdf-chalk" :class="locale">
