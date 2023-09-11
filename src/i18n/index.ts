@@ -175,7 +175,7 @@ const es = {
                 {
                   name: 'EmailMeter',
                   description:
-                    'Este es otro proyecto que ya llevaba un tiempo gestándose dentro de ShuttleCloud. En cierto momento se decidió darle más impulso y yo entré a ayudar, sobre todo con el frotend. El producto es una herramienta para obtener estadísticas del uso de tu email',
+                    'Este es otro proyecto que ya llevaba un tiempo gestándose dentro de ShuttleCloud. En cierto momento se decidió darle más impulso y yo entré a ayudar, sobre todo con el frontend. El producto es una herramienta para obtener estadísticas del uso de tu email',
                   bullets: [
                     'El backend también está hecho en Python',
                     'La información que se guarda sobre los emails se almacena en BigQuery',
@@ -423,7 +423,7 @@ const en = {
                 {
                   name: 'EmailMeter',
                   description:
-                    'This is another project that had been developing within ShuttleCloud for some time. At a certain point it was decided to give it more momentum and I came in to help, especially with the frotend. The product is a tool to obtain email usage statistics',
+                    'This is another project that had been developing within ShuttleCloud for some time. At a certain point it was decided to give it more momentum and I came in to help, especially with the frontend. The product is a tool to obtain email usage statistics',
                   bullets: [
                     'Backend is also written on Python',
                     'Email information is stored on BigQuery',
